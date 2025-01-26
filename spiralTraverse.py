@@ -15,12 +15,14 @@ def spiralTraverse(array):
             result.append(array[i][right])
 
         # bottom
-        for i in reversed(range(left, right)):
-            result.append(array[bottom][i])
+        if top < bottom:
+            for i in reversed(range(left, right)):
+                result.append(array[bottom][i])
 
         # left
-        for i in reversed(range(top + 1, bottom)):
-            result.append(array[i][left])
+        if left < right:
+            for i in reversed(range(top + 1, bottom)):
+                result.append(array[i][left])
 
         top += 1
         left += 1
@@ -29,7 +31,10 @@ def spiralTraverse(array):
 
     return result
 
-test1 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+test1 = [[1, 2, 3],
+         [4, 5, 6],
+         [7, 8, 9]]
+
 test2 = [[1, 2, 3, 4, 5],
          [10, 83, 93, 5, 6],
          [7, 8, 9, 23, 32]]

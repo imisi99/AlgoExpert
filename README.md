@@ -1,2 +1,2 @@
 # Algo-expert
-This is a repo for all the solutions of the algo-expert questions
+This is a repo for all my solutions of the algo-expert questions
