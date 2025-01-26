@@ -1,3 +1,4 @@
+# Time: 0(N^2) Space: 0(N)
 def threeNumberSum(array, targetSum):
     result = []
     table = {}

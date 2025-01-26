@@ -1,3 +1,4 @@
+# Time: 0(N^2) Space: 0(N)
 def spiralTraverse(array):
     result = []
     top = 0
@@ -39,3 +40,4 @@ test2 = [[1, 2, 3, 4, 5],
          [10, 83, 93, 5, 6],
          [7, 8, 9, 23, 32]]
 print(spiralTraverse(test2))
+print(spiralTraverse(test1))
