@@ -1,9 +1,13 @@
-# Time: 0(N) Space: 0(N)
+# Time: 0(log(N)) Space: 0(N)
 def mergeOverlappingIntervals(intervals):
     result = []
     n = len(intervals) - 1
     i = 0
     intervals.sort()
+    
+    if intervals[i][1] >= intervals[n][1]:
+        result.append(intervals[0])
+        return result
     while i <= n:
         # Last element 
         if i == n:
@@ -27,5 +31,6 @@ def mergeOverlappingIntervals(intervals):
 
 
 test = [[1, 2], [3, 5], [4, 7], [6, 8], [9, 10]]
+test1 = [[1, 10], [2, 3], [4, 5], [6, 7], [8, 9]]
 
-print(mergeOverlappingIntervals(test))
+print(mergeOverlappingIntervals(test1))
