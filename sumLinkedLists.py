@@ -35,3 +35,36 @@ def sumOfLinkedLists(linkedListOne, linkedListTwo):
         i -= 1
          
     return new_list
+
+
+# Time 0(max(m, n)) Space 0(max(m, n))
+
+class LinkedList:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+
+def sumOfLinkedLists(linkedListOne, linkedListTwo):
+    new_linkedList = LinkedList(0)
+    new_list = new_linkedList
+    current = linkedListOne
+    current1 = linkedListTwo
+
+    carry = 0
+    while current or current1 or carry:
+        val = 0
+        val1 = 0
+        if current:
+            val = current.value
+            current = current.next
+        if current1:
+            val1 = current1.value
+            current1 = current1.next
+        sum = int(val) + int(val1) + carry
+        new_list.next = LinkedList(sum % 10)
+        new_list = new_list.next
+        carry = sum // 10
+
+    return new_linkedList.next
+
