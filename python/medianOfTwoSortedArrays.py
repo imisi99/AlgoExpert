@@ -30,4 +30,31 @@ def medianOfTwoSortedArrays(arrayOne, arrayTwo):
     return curr
 
 
+# Time -> 0(log(min(n, m))) Space -> 0(1)
+def medianOfTwoSortedArrays1(arrayOne, arrayTwo):
+    smallArray, bigArray = arrayOne, arrayTwo
+    if len(arrayOne) > len(arrayTwo):
+        smallArray, bigArray = arrayTwo, arrayOne
+    
+    left, right = 0, len(smallArray)
+    mid = (len(smallArray) + len(bigArray) + 1) // 2
+    while True:
+        smallIdx = (left + right) //  2
+        bigIdx = mid - smallIdx
+        
+        smallMin = float("inf") if smallIdx >= len(smallArray) else smallArray[smallIdx]
+        smallMax = float("-inf") if smallIdx <= 0 else smallArray[smallIdx-1]
+        bigMin = float("inf") if bigIdx >= len(bigArray) else bigArray[bigIdx]
+        bigMax = float("-inf") if bigIdx <= 0 else bigArray[bigIdx-1]
+        
+        if smallMax > bigMin:
+            right = smallIdx - 1
+        elif bigMax > smallMin:
+            left = smallIdx + 1
+        else:
+            if (len(smallArray) + len(bigArray)) % 2 == 0:
+                return (max(smallMax, bigMax) + min(smallMin, bigMin)) / 2
+            return max(smallMax, bigMax)
+        
 print(medianOfTwoSortedArrays([5], [6, 7, 8, 9]))
+print(medianOfTwoSortedArrays1([5], [6, 7, 8, 9]))
